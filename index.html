@@ -245,6 +245,7 @@
             color: #888;
             font-weight: 600;
             font-size: 1.1rem;
+            object-fit: cover;
         }
         
         .trainer-info {
@@ -319,6 +320,98 @@
         
         .tariff-table tbody tr:hover {
             background-color: #e6f7ec;
+        }
+
+        /* --- Gallery Styles --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            height: 220px;
+            background-color: #f0f0f0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-placeholder-text {
+            color: #888;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* --- Contact Form Styles --- */
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--brand-green);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--brand-green);
+            box-shadow: 0 0 0 3px rgba(30, 86, 49, 0.1);
+        }
+
+        .submit-btn {
+            background-color: var(--brand-green);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--brand-red);
         }
 
         /* --- Footer --- */
@@ -418,8 +511,10 @@
     <header class="header">
         <div class="container">
             <div class="logo-container">
-                <!-- Add your logo's path to the src attribute -->
-                <img src="./assets/images/Seams Logo.png" alt="Seam Cricket Academy Logo" class="logo" onerror="this.style.display='none'">
+                <img src="./assets/images/Seams Logo.png" 
+                    alt="Seam Cricket Academy Logo" 
+                    class="logo" 
+                    onerror="this.style.display='none'">
                 <div class="logo-text">
                     SEAM
                     <span>CRICKET ACADEMY</span>
@@ -434,6 +529,8 @@
                 <li><a href="#home" class="nav-link active" onclick="showPage('home', this)">Home</a></li>
                 <li><a href="#programs" class="nav-link" onclick="showPage('programs', this)">Programs</a></li>
                 <li><a href="#trainers" class="nav-link" onclick="showPage('trainers', this)">Trainers</a></li>
+                <li><a href="#gallery" class="nav-link" onclick="showPage('gallery', this)">Gallery</a></li>
+                <li><a href="#contact" class="nav-link" onclick="showPage('contact', this)">Register/Contact</a></li>
             </ul>
         </div>
     </header>
@@ -486,42 +583,37 @@
                 <div class="service-card">
                     <h3>1-on-1 Training Sessions</h3>
                     <p>Personalized sessions focused on individual development.</p>
-                    <span class="service-price">INR 1500 per session</span>
                 </div>
+
                 <div class="service-card">
                     <h3>Adult 1-on-1 Sessions</h3>
                     <p>Perfect for adults looking to get back into the game or improve fitness and form.</p>
-                    <span class="service-price">INR 1500 per session</span>
+                    
                 </div>
                 <div class="service-card">
                     <h3>Cricket Net Rentals</h3>
                     <p>Fast-paced astro turf pitches available for practice.</p>
-                    <span class="service-price">INR 450/hour</span>
                 </div>
                 <div class="service-card">
                     <h3>Side-Arm Throw Down Sessions</h3>
                     <p>High-intensity throwdown sessions for serious batting drills.</p>
-                    <span class="service-price">INR 1500/hour</span>
                 </div>
                 <div class="service-card">
                     <h3>Bowling Machine Sessions</h3>
                     <p>High-intensity bowling machine sessions for batting aspirants.</p>
-                    <span class="service-price">INR 1000/hour</span>
                 </div>
 
                 <div class="service-card">
                     <h3>Annual Camp (For Kids 5+ yrs)</h3>
                     <p>A structured 10-month program for young aspiring cricketers.</p>
-                    <span class="service-price">INR 22,000 for 10 months</span>
                 </div>
                 <div class="service-card">
                     <h3>Summer Coaching Camp</h3>
                     <p>A focused 2-month camp (April & May) with skill drills and match play.</p>
-                    <span class="service-price">INR 10,000 for 2 months</span>
                 </div>
             </div>
 
-            <h2>Tariff Table</h2>
+            <h2>Service Overview</h2>
             <div class="table-container">
                 <table class="tariff-table">
                     <thead>
@@ -530,11 +622,7 @@
                             <th>Program</th>
                             <th>Timings</th>
                             <th>Period</th>
-                            <th>Total Fee (INR)</th>
-                            <th>Monthly</th>
-                            <th>Quarterly</th>
-                            <th>Half Yearly</th>
-                            <th>Discount</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -543,66 +631,39 @@
                             <td>Children Weekend</td>
                             <td>Saturday: 3:30 PM - 5:30 PM<br>Sunday: 7:00 AM - 9:00 AM</td>
                             <td>June to March</td>
-                            <td>22000</td>
-                            <td>NA</td>
-                            <td>5500</td>
-                            <td>11000</td>
-                            <td>&nbsp;</td>
                         </tr>
+                        
                         <tr>
                             <td>5 yrs - 17 yrs</td>
                             <td>Children Weekday</td>
                             <td>Monday to Friday: 6:30 PM - 8:30 PM</td>
                             <td>NA</td>
-                            <td>30000</td>
-                            <td>2500</td>
-                            <td>7500</td>
-                            <td>14000</td>
-                            <td>1000 if paid for Half yearly</td>
                         </tr>
                         <tr>
                             <td>18 yrs and above</td>
                             <td>Adult Coaching</td>
                             <td>Monday to Friday: 7:00 AM - 9:00 AM</td>
                             <td>NA</td>
-                            <td>NA</td>
-                            <td>4000</td>
-                            <td>12000</td>
-                            <td>22000</td>
-                            <td>2000 if paid for Half yearly</td>
+                            
                         </tr>
                         <tr>
                             <td>18 yrs and above</td>
                             <td>1:1 Adult Program</td>
                             <td>Flexible Timings</td>
-                            <td>NA</td>
-                            <td>18000</td>
-                            <td>NA</td>
-                            <td>NA</td>
-                            <td>NA</td>
-                            <td>NA</td>
+                            <td>NA</td>                            
                         </tr>
                         <tr>
                             <td>NA</td>
                             <td>Net Booking: Pay per hour</td>
                             <td>NA</td>
-                            <td>NA</td>
-                            <td>450</td>
-                            <td>8000</td>
-                            <td>NA</td>
-                            <td>NA</td>
-                            <td>NA</td>
+                            <td>NA</td>                            
                         </tr>
                         <tr>
                             <td>NA</td>
                             <td>Nets with Bowling Machine</td>
                             <td>NA</td>
                             <td>NA</td>
-                            <td>1000</td>
-                            <td>25000</td>
-                            <td>NA</td>
-                            <td>NA</td>
-                            <td>NA</td>
+                            
                         </tr>
                     </tbody>
                 </table>
@@ -617,10 +678,12 @@
                 
                 <!-- Trainer 1 -->
                 <div class="trainer-card">
-                    <div class="trainer-pic-placeholder">
-                        <!-- Replace this div with: <img src="path/to/patrick-das.jpg" alt="Mr. Patrick Das"> -->
-                        Photo Placeholder
-                    </div>
+                    <img src="./assets/images/Patrick Pic.jpg" 
+                         alt="Patrick Das Picture" 
+                         class="trainer-pic-placeholder" 
+                         onerror="this.style.display='none'; this.nextElementSibling.insertAdjacentHTML('beforebegin', '<div class=\'trainer-pic-placeholder\'>Photo not found</div>'); this.remove();">
+                    
+
                     <div class="trainer-info">
                         <h3>Mr. Patrick Das</h3>
                         <span class="title">Head Coach</span>
@@ -630,10 +693,12 @@
 
                 <!-- Trainer 2 -->
                 <div class="trainer-card">
-                    <div class="trainer-pic-placeholder">
-                        <!-- Replace this div with: <img src="path/to/anish-john.jpg" alt="Mr. Anish John"> -->
-                        Photo Placeholder
-                    </div>
+                    <img src="./assets/images/Anish Pic.jpg" 
+                         alt="Patrick Das Picture" 
+                         class="trainer-pic-placeholder" 
+                         onerror="this.style.display='none'; this.nextElementSibling.insertAdjacentHTML('beforebegin', '<div class=\'trainer-pic-placeholder\'>Photo not found</div>'); this.remove();">
+
+
                     <div class="trainer-info">
                         <h3>Mr. Anish John</h3>
                         <span class="title">Co-Founder & Coach</span>
@@ -643,10 +708,10 @@
 
                 <!-- Trainer 3 -->
                 <div class="trainer-card">
-                    <div class="trainer-pic-placeholder">
-                        <!-- Replace this div with: <img src="path/to/vinodh-c.jpg" alt="Mr. Vinodh C"> -->
-                        Photo Placeholder
-                    </div>
+                    <img src="./assets/images/Vinodh Pic.jpg" 
+                         alt="Patrick Das Picture" 
+                         class="trainer-pic-placeholder" 
+                         onerror="this.style.display='none'; this.nextElementSibling.insertAdjacentHTML('beforebegin', '<div class=\'trainer-pic-placeholder\'>Photo not found</div>'); this.remove();">
                     <div class="trainer-info">
                         <h3>Mr. Vinodh C</h3>
                         <span class="title">Founder & Coach</span>
@@ -654,6 +719,103 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- ===== GALLERY PAGE (New) ===== -->
+        <section id="gallery" class="page">
+            <h2>Academy Moments</h2>
+            <p>A glimpse into our training sessions, matches, and facilities.</p>
+            
+            <div class="gallery-grid">
+                <!-- Gallery Placeholder 1 -->
+                <div class="gallery-item">
+                    <!-- Replace src with real image later -->
+                    <div class="gallery-placeholder-text">Gallery Image 1<br>(Upload to assets/images)</div>
+                    <!-- <img src="./assets/images/gallery1.jpg" alt="Training Session"> -->
+                </div>
+                <!-- Gallery Placeholder 2 -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-text">Gallery Image 2</div>
+                </div>
+                <!-- Gallery Placeholder 3 -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-text">Gallery Image 3</div>
+                </div>
+                <!-- Gallery Placeholder 4 -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-text">Gallery Image 4</div>
+                </div>
+                <!-- Gallery Placeholder 5 -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-text">Gallery Image 5</div>
+                </div>
+                <!-- Gallery Placeholder 6 -->
+                <div class="gallery-item">
+                    <div class="gallery-placeholder-text">Gallery Image 6</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CONTACT/REGISTER PAGE (New) ===== -->
+        <section id="contact" class="page">
+            <h2>Register / Contact Us</h2>
+            <p style="text-align: center;">Fill out the form below to register for a program or ask us a question.</p>
+            
+            <div class="form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="b8598de8-3fdf-4afb-acb4-91cad0f2f005">
+                    
+                    <!-- Form Settings -->
+                    <input type="hidden" name="subject" value="New Registration/Enquiry - Seam Cricket Academy">
+                    <input type="hidden" name="from_name" value="Seam Website">
+
+                    <div class="form-group">
+                        <label class="form-label" for="studentName">Student Name</label>
+                        <input type="text" id="studentName" name="studentName" class="form-input" required placeholder="Enter student's full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="parentName">Parent/Guardian Name (if under 18)</label>
+                        <input type="text" id="parentName" name="parentName" class="form-input" placeholder="Enter parent's name">
+                    </div>
+
+                    <div class="grid-2" style="margin-bottom: 0; gap: 20px;">
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-input" required placeholder="yourname@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="program">Interested Program</label>
+                        <select id="program" name="program" class="form-select" required>
+                            <option value="" disabled selected>Select a program...</option>
+                            <option value="Children Weekend">Children Weekend (5-17 yrs)</option>
+                            <option value="Children Weekday">Children Weekday (5-17 yrs)</option>
+                            <option value="Adult Coaching">Adult Coaching</option>
+                            <option value="1:1 Adult Program">1:1 Adult Program</option>
+                            <option value="Net Rental">Net Booking / Rental</option>
+                            <option value="Bowling Maching Rental">Bowling Maching Rental</option>
+                            <option value="Summer Camp">Summer Coaching Camp</option>
+                            <option value="General Enquiry">Other / General Enquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message / Additional Details</label>
+                        <textarea id="message" name="message" class="form-textarea" rows="4" placeholder="Any specific questions or details..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Enquiry</button>
+
+                </form>
             </div>
         </section>
 
@@ -678,6 +840,8 @@
                     <li><a href="#home" onclick="showPage('home', this, true)">Home</a></li>
                     <li><a href="#programs" onclick="showPage('programs', this, true)">Programs</a></li>
                     <li><a href="#trainers" onclick="showPage('trainers', this, true)">Trainers</a></li>
+                    <li><a href="#gallery" onclick="showPage('gallery', this, true)">Gallery</a></li>
+                    <li><a href="#contact" onclick="showPage('contact', this, true)">Register/Contact</a></li>
                     <li><a href="#">Instagram</a></li> <!-- Add your Insta link -->
                 </ul>
             </div>
@@ -710,7 +874,11 @@
                 clickedLink.classList.add('active');
             } else {
                 // If a footer link was clicked, find the matching header link
-                document.querySelector(`.navbar a[href="#${pageId}"]`).classList.add('active');
+                // Only try to add 'active' if the link exists in the navbar
+                const headerLink = document.querySelector(`.navbar a[href="#${pageId}"]`);
+                if (headerLink) {
+                    headerLink.classList.add('active');
+                }
                 // Scroll to top
                 window.scrollTo(0, 0);
             }
