@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import PlayerOfMonth from '../components/PlayerOfMonth.astro';
+import AboutSection from '../components/AboutSection.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Programs from '../components/Programs.astro';
+import Coaches from '../components/Coaches.astro';
+import Gallery from '../components/Gallery.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+import academy from '../data/academy.json';
+---
+
+<Layout title="Seam Cricket Academy">
+	<Navbar />
+	<Hero />
+    
+    <main class="container mx-auto px-4">
+        <!-- Player of the Month - with extra top margin for smooth transition from hero -->
+        <section id="home" class="mb-28 mt-8 reveal">
+            <PlayerOfMonth />
+        </section>
+
+        <!-- Programs Section - Moved after home, full container width -->
+        <section id="programs" class="mb-32 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 text-center text-white">Our Services <span class="text-neon">& Programs</span></h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">World-class coaching programs designed for every skill level and age group.</p>
+            <Programs />
+        </section>
+
+        <!-- About Section -->
+        <section class="mb-32 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center text-white"><span class="text-neon">About</span> Us</h2>
+            <AboutSection />
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="mb-32 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center text-white">Why <span class="text-neon">Choose Us?</span></h2>
+            <WhyChooseUs />
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="mb-32 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center text-white">What People <span class="text-neon">Say</span></h2>
+            <Testimonials />
+        </section>
+
+        <!-- Coaches Section -->
+        <section id="trainers" class="mb-32 reveal">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 text-center text-white">Meet The <span class="text-neon">Coaches</span></h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">Our experienced coaching team brings decades of professional cricket experience.</p>
+            <Coaches />
+        </section>
+    </main>
+
+    <!-- Gallery Section - Full width -->
+    <section id="gallery" class="mb-32 reveal overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 text-center text-white">Academy <span class="text-neon">Moments</span></h2>
+            <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">A glimpse into our training sessions, matches, and facilities.</p>
+        </div>
+        <Gallery />
+    </section>
+
+    <main class="container mx-auto px-4">
+        <!-- Contact / Form Section -->
+        <section id="contact" class="reveal pt-20 pb-24 border-t border-white/5">
+            <h2 class="text-4xl md:text-6xl font-light mb-6 text-white text-center tracking-wide">Ready to <span class="text-neon">Play?</span></h2>
+            <p class="text-white/50 mb-16 text-lg text-center max-w-2xl mx-auto">Register for a program or get in touch with our team.</p>
+            <ContactForm />
+        </section>
+    </main>
+
+    <Footer />
+    <FloatingWhatsApp />
+    <ScrollReveal />
+</Layout>

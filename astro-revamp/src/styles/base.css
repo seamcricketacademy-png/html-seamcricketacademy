@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #030305;
+  --color-depth: #0A0A0F;
+  --color-neon: #4285F4;
+  --color-surface: rgba(255, 255, 255, 0.03);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --image-hero-glow: radial-gradient(circle at 50% -20%, rgba(66, 133, 244, 0.15), rgba(0, 0, 0, 0));
+  --image-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+
+  --shadow-neon: 0 0 30px rgba(66, 133, 244, 0.15);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-void);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: white;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(66, 133, 244, 0.08) 0%, transparent 50%),
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  /* Snap sections */
+  section {
+    scroll-snap-align: start;
+    scroll-margin-top: 8rem;
+  }
+
+  /* Dark themed scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) var(--color-void);
+  }
+}
+
+/* Custom Utilities */
+@utility glass-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--image-card-gradient);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s ease;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Hover state - smoother glow */
+.glass-panel:hover {
+  border-color: rgba(66, 133, 244, 0.2);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(66, 133, 244, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Before pseudo-element - softer top highlight */
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 10%, rgba(255, 255, 255, 0.15) 50%, transparent 90%);
+}
+
+@utility text-neon-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffffff, var(--color-neon), #c084fc);
+}

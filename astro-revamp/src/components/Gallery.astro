@@ -1,0 +1,200 @@
+---
+// Gallery media including images and videos
+const galleryMedia = [
+    { type: 'image', src: '/assets/gallery/20250629_075038.jpg' },
+    { type: 'video', src: '/assets/gallery/20250629_074943.mp4' },
+    { type: 'image', src: '/assets/gallery/20250629_075531.jpg' },
+    { type: 'image', src: '/assets/gallery/20250803_083502.jpg' },
+    { type: 'image', src: '/assets/gallery/20250824_080455.jpg' },
+    { type: 'image', src: '/assets/gallery/20250824_080537.jpg' },
+    { type: 'video', src: '/assets/gallery/20250824_090103.mp4' },
+    { type: 'image', src: '/assets/gallery/20250824_090447.jpg' },
+    { type: 'image', src: '/assets/gallery/20250824_090459.jpg' },
+    { type: 'image', src: '/assets/gallery/20250824_090502.jpg' },
+    { type: 'image', src: '/assets/gallery/IMG_E0121.JPG' },
+];
+---
+
+<!-- Auto-scrolling gallery with fullscreen expand -->
+<div class="gallery-wrapper relative px-4 md:px-8">
+    <div 
+        id="galleryCarousel" 
+        class="flex gap-6 overflow-hidden pb-6"
+    >
+        {galleryMedia.map((item, i) => (
+            <div 
+                class="gallery-item flex-shrink-0 w-[85vw] md:w-[60vw] lg:w-[45vw] h-[50vh] md:h-[60vh] rounded-2xl overflow-hidden border border-white/10 hover:border-neon/30 transition-all duration-500 group shadow-2xl cursor-pointer relative"
+                data-index={i}
+                data-type={item.type}
+                data-src={item.src}
+            >
+                <!-- Expand icon overlay -->
+                <div class="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-sm rounded-full p-2">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                    </svg>
+                </div>
+                
+                {item.type === 'video' ? (
+                    <video 
+                        src={item.src}
+                        class="w-full h-full object-cover"
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                        onmouseenter="this.play()"
+                        onmouseleave="this.pause()"
+                    />
+                ) : (
+                    <img 
+                        src={item.src} 
+                        alt={`Academy moment ${i + 1}`}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        loading="lazy"
+                    />
+                )}
+            </div>
+        ))}
+    </div>
+</div>
+
+<!-- Fullscreen overlay -->
+<div id="galleryFullscreen" class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl hidden items-center justify-center">
+    <!-- Close button -->
+    <button id="closeFullscreen" class="absolute top-6 right-6 z-10 text-white/70 hover:text-white transition-colors p-2">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+    </button>
+    
+    <!-- Content container -->
+    <div id="fullscreenContent" class="max-w-[95vw] max-h-[90vh] flex items-center justify-center">
+        <!-- Image or video will be injected here -->
+    </div>
+</div>
+
+<script>
+    // Auto-scroll loop for gallery - FASTER SPEED
+    const gallery = document.getElementById('galleryCarousel');
+    let galleryScrollInterval: number | null = null;
+    let galleryScrollDirection = 1;
+    let galleryPaused = false;
+    
+    const startGalleryScroll = () => {
+        if (galleryPaused) return;
+        
+        galleryScrollInterval = window.setInterval(() => {
+            if (!gallery || galleryPaused) return;
+            
+            const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+            
+            // Reverse at ends for smooth loop
+            if (gallery.scrollLeft >= maxScroll - 5) {
+                galleryScrollDirection = -1;
+            } else if (gallery.scrollLeft <= 5) {
+                galleryScrollDirection = 1;
+            }
+            
+            // Faster auto-scroll (was 0.8, now 2.0)
+            gallery.scrollLeft += galleryScrollDirection * 2.0;
+        }, 20); // Faster interval (was 30, now 20)
+    };
+    
+    const stopGalleryScroll = () => {
+        galleryPaused = true;
+        if (galleryScrollInterval) {
+            clearInterval(galleryScrollInterval);
+            galleryScrollInterval = null;
+        }
+    };
+    
+    const resumeGalleryScroll = () => {
+        galleryPaused = false;
+        if (!galleryScrollInterval) {
+            startGalleryScroll();
+        }
+    };
+    
+    // Start auto-scroll after delay
+    setTimeout(startGalleryScroll, 1500);
+    
+    // Pause on hover/touch, resume on leave
+    gallery?.addEventListener('mouseenter', stopGalleryScroll);
+    gallery?.addEventListener('mouseleave', () => setTimeout(resumeGalleryScroll, 1000));
+    gallery?.addEventListener('touchstart', stopGalleryScroll, { passive: true });
+    gallery?.addEventListener('touchend', () => setTimeout(resumeGalleryScroll, 1500));
+    
+    // Fullscreen functionality
+    const fullscreenOverlay = document.getElementById('galleryFullscreen');
+    const fullscreenContent = document.getElementById('fullscreenContent');
+    const closeBtn = document.getElementById('closeFullscreen');
+    
+    const openFullscreen = (type: string, src: string) => {
+        if (!fullscreenOverlay || !fullscreenContent) return;
+        
+        // Clear previous content
+        fullscreenContent.innerHTML = '';
+        
+        if (type === 'video') {
+            const video = document.createElement('video');
+            video.src = src;
+            video.className = 'max-w-full max-h-[90vh] rounded-xl';
+            video.controls = true;
+            video.autoplay = true;
+            video.loop = true;
+            fullscreenContent.appendChild(video);
+        } else {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = 'max-w-full max-h-[90vh] rounded-xl object-contain';
+            img.alt = 'Gallery fullscreen';
+            fullscreenContent.appendChild(img);
+        }
+        
+        fullscreenOverlay.classList.remove('hidden');
+        fullscreenOverlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+    
+    const closeFullscreen = () => {
+        if (!fullscreenOverlay || !fullscreenContent) return;
+        
+        fullscreenOverlay.classList.add('hidden');
+        fullscreenOverlay.classList.remove('flex');
+        document.body.style.overflow = '';
+        
+        // Stop any video playing
+        const video = fullscreenContent.querySelector('video');
+        if (video) video.pause();
+        
+        fullscreenContent.innerHTML = '';
+    };
+    
+    // Click handlers for gallery items
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            const target = e.currentTarget as HTMLElement;
+            const type = target.dataset.type;
+            const src = target.dataset.src;
+            if (type && src) {
+                openFullscreen(type, src);
+            }
+        });
+    });
+    
+    // Close handlers
+    closeBtn?.addEventListener('click', closeFullscreen);
+    fullscreenOverlay?.addEventListener('click', (e) => {
+        if (e.target === fullscreenOverlay) {
+            closeFullscreen();
+        }
+    });
+    
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeFullscreen();
+        }
+    });
+</script>

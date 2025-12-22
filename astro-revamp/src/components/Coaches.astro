@@ -1,0 +1,47 @@
+---
+import academy from '../data/academy.json';
+---
+<div class="space-y-12">
+    <!-- Featured header text -->
+    <p class="text-white/50 text-center text-lg max-w-3xl mx-auto leading-relaxed">
+        Our coaching team combines over 60 years of professional cricket experience to develop champions at every level.
+    </p>
+    
+    <!-- Coaches Grid - Championed with fixed card rendering -->
+    <div class="grid lg:grid-cols-3 gap-8">
+        {academy.trainers.map((trainer, i) => (
+            <div class="group">
+                <!-- Card with explicit border and cleaner edges -->
+                <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] backdrop-blur-xl shadow-xl transition-all duration-500 hover:border-neon/30 hover:shadow-neon/10">
+                    <!-- Image - Very tall to champion the section -->
+                    <div class="h-[600px] w-full overflow-hidden relative">
+                        <img 
+                            src={trainer.image} 
+                            alt={trainer.name}
+                            class="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+                            loading="lazy"
+                        />
+                        <!-- Multi-layer gradient overlay for smooth fade -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-60"></div>
+                        <!-- Edge fade to prevent artifacts -->
+                        <div class="absolute inset-0 shadow-[inset_0_0_30px_rgba(3,3,5,0.5)]"></div>
+                    </div>
+                    
+                    <!-- Content overlay -->
+                    <div class="absolute bottom-0 left-0 right-0 p-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-10 h-1 bg-neon rounded-full"></span>
+                            <p class="text-neon text-sm uppercase tracking-[0.3em] font-medium">{trainer.title}</p>
+                        </div>
+                        <h3 class="text-3xl font-light text-white mb-4 tracking-wide group-hover:text-neon transition-colors duration-500">{trainer.name}</h3>
+                        <p class="text-white/50 text-sm leading-relaxed">{trainer.bio}</p>
+                    </div>
+                    
+                    <!-- Subtle top accent on hover -->
+                    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-neon/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

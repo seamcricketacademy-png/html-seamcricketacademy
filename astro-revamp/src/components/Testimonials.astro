@@ -1,0 +1,25 @@
+---
+import academy from '../data/academy.json';
+---
+<div class="relative">
+    <!-- Stacked cards effect -->
+    <div class="space-y-6">
+        {academy.testimonials.map((testimonial, i) => (
+            <div 
+                class="group glass-panel p-8 md:p-10 border-l-4 border-neon/50 hover:border-neon transition-all duration-300 hover:scale-[1.01] hover:-translate-x-2"
+                style={`transform: translateX(${i * 20}px); position: relative; z-index: ${3 - i};`}
+            >
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <!-- Quote icon -->
+                    <div class="flex-shrink-0 text-6xl text-neon/30 font-serif leading-none">"</div>
+                    
+                    <!-- Content -->
+                    <div class="flex-1">
+                        <p class="text-gray-200 text-lg md:text-xl leading-relaxed mb-6">{testimonial.quote}</p>
+                        <p class="text-neon font-bold text-lg">{testimonial.author}</p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>

@@ -1,0 +1,134 @@
+---
+// Merged service cards with all details where applicable
+const programs = [
+    { 
+        title: "Children Weekend", 
+        desc: "Structured weekend coaching program for young cricketers.",
+        ageGroup: "5 yrs - 17 yrs",
+        timing: "Sat: 3:30 - 5:30 PM • Sun: 7 - 9 AM",
+        period: "June to March",
+        icon: "🏏",
+        featured: true
+    },
+    { 
+        title: "Children Weekday", 
+        desc: "Evening training sessions for school-going cricketers.",
+        ageGroup: "5 yrs - 17 yrs",
+        timing: "Mon-Fri: 6:30 - 8:30 PM",
+        period: "Year Round",
+        icon: "🌙",
+        featured: false
+    },
+    { 
+        title: "Adult Coaching", 
+        desc: "Morning sessions for adults looking to improve their game.",
+        ageGroup: "18 yrs and above",
+        timing: "Mon-Fri: 7:00 - 9:00 AM",
+        period: "Year Round",
+        icon: "💪",
+        featured: false
+    },
+    { 
+        title: "1-on-1 Training Sessions", 
+        desc: "Personalized sessions focused on individual development.",
+        timing: "Flexible",
+        icon: "🎯",
+        featured: true
+    },
+    { 
+        title: "Adult 1-on-1 Sessions", 
+        desc: "Perfect for adults looking to get back into the game or improve fitness and form.",
+        ageGroup: "18 yrs and above",
+        timing: "Flexible",
+        icon: "🏃",
+        featured: false
+    },
+    { 
+        title: "Cricket Net Rentals", 
+        desc: "Fast-paced astro turf pitches available for practice. Net Booking (Pay per hour) and Bowling Machine options available.",
+        timing: "Pay Per Hour",
+        icon: "🥅",
+        featured: false
+    },
+    { 
+        title: "Side-Arm Throw Down Sessions", 
+        desc: "High-intensity throwdown sessions for serious batting drills.",
+        icon: "⚡",
+        featured: false
+    },
+    { 
+        title: "Bowling Machine Sessions", 
+        desc: "High-intensity bowling machine sessions for batting aspirants.",
+        icon: "🎳",
+        featured: false
+    },
+    { 
+        title: "Annual Camp (For Kids 5+ yrs)", 
+        desc: "A structured 10-month program for young aspiring cricketers.",
+        ageGroup: "5 yrs and above",
+        period: "10 Months",
+        icon: "📅",
+        featured: true
+    },
+    { 
+        title: "Summer Coaching Camp", 
+        desc: "A focused 2-month camp with skill drills and match play.",
+        period: "April & May",
+        icon: "☀️",
+        featured: true
+    }
+];
+---
+
+<!-- Vertical stacked layout for programs - bigger cards with equal margins -->
+<div class="grid lg:grid-cols-2 gap-8">
+    {programs.map((program) => (
+        <div class={`program-card ${program.featured ? 'relative' : ''}`}>
+            <!-- Card - Bigger with more padding -->
+            <div class={`h-full glass-panel p-10 transition-all duration-500 hover:border-neon/30 ${program.featured ? 'border-neon/20' : ''}`}>
+                <!-- Featured Badge -->
+                {program.featured && (
+                    <div class="absolute top-6 right-6 px-4 py-1.5 bg-neon/15 text-neon text-xs uppercase tracking-widest rounded-full border border-neon/20">
+                        Popular
+                    </div>
+                )}
+                
+                <!-- Header row with icon and title -->
+                <div class="flex items-start gap-6 mb-6">
+                    <!-- Icon - Bigger -->
+                    <div class="text-5xl flex-shrink-0">{program.icon}</div>
+                    
+                    <div class="flex-1">
+                        <!-- Title - Bigger -->
+                        <h3 class="text-2xl font-light text-white mb-3 tracking-wide">{program.title}</h3>
+                        
+                        <!-- Description -->
+                        <p class="text-white/60 leading-relaxed">{program.desc}</p>
+                    </div>
+                </div>
+                
+                <!-- Details - Horizontal layout for better use of space -->
+                <div class="flex flex-wrap gap-6 pt-6 border-t border-white/10">
+                    {program.ageGroup && (
+                        <div class="flex items-center gap-3">
+                            <span class="text-neon text-lg">👤</span>
+                            <span class="text-white/70">{program.ageGroup}</span>
+                        </div>
+                    )}
+                    {program.timing && (
+                        <div class="flex items-center gap-3">
+                            <span class="text-neon text-lg">🕐</span>
+                            <span class="text-white/70">{program.timing}</span>
+                        </div>
+                    )}
+                    {program.period && (
+                        <div class="flex items-center gap-3">
+                            <span class="text-neon text-lg">📅</span>
+                            <span class="text-white/70">{program.period}</span>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    ))}
+</div>

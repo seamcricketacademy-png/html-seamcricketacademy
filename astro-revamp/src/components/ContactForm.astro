@@ -1,0 +1,123 @@
+---
+import academy from '../data/academy.json';
+---
+<div class="max-w-2xl mx-auto">
+    <!-- Enquiry / Registration Form -->
+    <div class="glass-panel p-8 md:p-10">
+        <h3 class="text-2xl font-light text-white mb-8 tracking-wide text-center">Enquiry / Registration</h3>
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+            <input type="hidden" name="access_key" value="b8598de8-3fdf-4afb-acb4-91cad0f2f005" />
+            <input type="hidden" name="subject" value="New Registration/Enquiry - Seam Cricket Academy" />
+            <input type="hidden" name="from_name" value="Seam Website" />
+            
+            <!-- Student Name -->
+            <div>
+                <label class="block text-white/60 text-sm mb-2 tracking-wide">Student Name *</label>
+                <input 
+                    type="text" 
+                    name="studentName" 
+                    placeholder="Enter student's full name"
+                    required
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10"
+                />
+            </div>
+            
+            <!-- Parent Name -->
+            <div>
+                <label class="block text-white/60 text-sm mb-2 tracking-wide">Parent/Guardian Name (if under 18)</label>
+                <input 
+                    type="text" 
+                    name="parentName" 
+                    placeholder="Enter parent's name"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10"
+                />
+            </div>
+            
+            <!-- Phone & Email -->
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-white/60 text-sm mb-2 tracking-wide">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        name="phone" 
+                        placeholder="+91 XXXXX XXXXX"
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10"
+                    />
+                </div>
+                <div>
+                    <label class="block text-white/60 text-sm mb-2 tracking-wide">Email Address *</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="yourname@example.com"
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10"
+                    />
+                </div>
+            </div>
+            
+            <!-- Program Select -->
+            <div>
+                <label class="block text-white/60 text-sm mb-2 tracking-wide">Interested Program *</label>
+                <select 
+                    name="program" 
+                    required
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white/60 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10 appearance-none cursor-pointer"
+                >
+                    <option value="" disabled selected>Select a program...</option>
+                    <option value="Children Weekend">Children Weekend (5-17 yrs)</option>
+                    <option value="Children Weekday">Children Weekday (5-17 yrs)</option>
+                    <option value="Adult Coaching">Adult Coaching</option>
+                    <option value="1:1 Adult Program">1:1 Adult Program</option>
+                    <option value="Net Rental">Net Booking / Rental</option>
+                    <option value="Bowling Machine Rental">Bowling Machine Rental</option>
+                    <option value="Summer Camp">Summer Coaching Camp</option>
+                    <option value="General Enquiry">Other / General Enquiry</option>
+                </select>
+            </div>
+            
+            <!-- Message -->
+            <div>
+                <label class="block text-white/60 text-sm mb-2 tracking-wide">Message / Additional Details</label>
+                <textarea 
+                    name="message" 
+                    placeholder="Any specific questions or details..."
+                    rows="3"
+                    class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 text-white placeholder:text-white/30 focus:border-neon/50 focus:outline-none transition-all duration-300 focus:bg-white/10 resize-none"
+                ></textarea>
+            </div>
+            
+            <button 
+                type="submit"
+                class="w-full py-4 bg-gradient-to-r from-neon to-purple-500 hover:from-neon/80 hover:to-purple-400 text-white font-medium rounded-xl transition-all duration-500 hover:shadow-lg hover:shadow-neon/30 active:scale-[0.98]"
+            >
+                Submit Enquiry
+            </button>
+        </form>
+    </div>
+    
+    <!-- Get in Touch - Blended below (no side-by-side) -->
+    <div class="mt-8 pt-8 border-t border-white/10">
+        <h4 class="text-lg font-light text-white mb-6 tracking-wide text-center">Get in Touch</h4>
+        <div class="grid md:grid-cols-2 gap-6 text-center">
+            <div class="flex flex-col items-center gap-2">
+                <span class="text-2xl">📍</span>
+                <p class="text-white/50 text-sm">{academy.contact.address}</p>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <span class="text-2xl">📧</span>
+                <a href={`mailto:${academy.contact.email}`} class="text-white/50 text-sm hover:text-neon transition-colors">{academy.contact.email}</a>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+                <span class="text-2xl">🕐</span>
+                <p class="text-white/50 text-sm">{academy.contact.timings}</p>
+            </div>
+            <!-- WhatsApp with theme color (not green) -->
+            <div class="flex flex-col items-center gap-2">
+                <span class="text-2xl">📱</span>
+                <a href={academy.contact.whatsapp} target="_blank" rel="noopener noreferrer" class="text-neon text-sm hover:underline">{academy.contact.phone}</a>
+            </div>
+        </div>
+    </div>
+</div>
