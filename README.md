@@ -47,7 +47,7 @@ html-seamcricketacademy/
 │   │   └── data/           # JSON data files
 │   └── public/             # Static assets
 ├── assets/                 # Legacy assets
-└── index.html              # Legacy HTML (deprecated)
+└── backup-legacy/          # Legacy HTML & Backups
 ```
 
 ## 🚀 Getting Started

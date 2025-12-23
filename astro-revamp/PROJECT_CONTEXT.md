@@ -13,8 +13,13 @@
 ## 2. Proactive Analysis Protocol
 **Mandatory Checks** (Perform these BEFORE starting work):
 1.  **Repository Root Verification**: Always check the root `d:\html-seamcricketacademy` for `.github/workflows` to identify CI/CD pipelines.
-2.  **Legacy vs. Active**: Confirm which directory is the "Source of Truth" (currently `astro-revamp`).
+2.  **Legacy vs. Active**: Confirm which directory is the "Source of Truth" (currently `d:\html-seamcricketacademy\astro-revamp`).
 3.  **Environment Scan**: Check `package.json` and `astro.config.mjs` for build targets.
+
+> [!WARNING]
+> **ANTI-HALLUCINATION PROTOCOL**:
+> *   **Active Source**: `astro-revamp` is the **ONLY** active project.
+> *   **Legacy Trap**: The `backup-legacy` folder and any `index.html` found in the root are **DEPRECATED**. Do NOT edit them. Do NOT read them for "current state" verification. Only read them if explicitly asked to migrate lost content.
 
 ## 3. Key Documentation
 *   **`DESIGN_SYSTEM.md`**: (In project root) Contains strict guidelines for Iconography (Size: w-16), Card Styles, and Colors. **CONSULT THIS BEFORE MAKING UI CHANGES.**
