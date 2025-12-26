@@ -3,15 +3,16 @@
 @theme {
   --color-void: #030305;
   --color-depth: #0A0A0F;
-  --color-neon: #4285F4;
+  --color-neon: #FFD700; /* Gold */
+  --color-green: #22C55E; /* Green */
   --color-surface: rgba(255, 255, 255, 0.03);
 
   --font-sans: 'Inter', system-ui, sans-serif;
 
-  --image-hero-glow: radial-gradient(circle at 50% -20%, rgba(66, 133, 244, 0.15), rgba(0, 0, 0, 0));
+  --image-hero-glow: radial-gradient(circle at 50% -20%, rgba(255, 215, 0, 0.15), rgba(0, 0, 0, 0));
   --image-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
 
-  --shadow-neon: 0 0 30px rgba(66, 133, 244, 0.15);
+  --shadow-neon: 0 0 30px rgba(255, 215, 0, 0.15);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
@@ -30,7 +31,7 @@
     overflow-x: hidden;
     background-image:
       /* Stadium Light Glow (Top Center) */
-      radial-gradient(circle at 50% -10%, rgba(66, 133, 244, 0.12) 0%, transparent 60%),
+      radial-gradient(circle at 50% -10%, rgba(255, 215, 0, 0.12) 0%, transparent 60%),
       /* Subtle Cricket Net / Hex Pattern */
       radial-gradient(circle at 100% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -88,10 +89,10 @@
 
 /* Hover state - smoother glow */
 .glass-panel:hover {
-  border-color: rgba(66, 133, 244, 0.2);
+  border-color: rgba(255, 215, 0, 0.2);
   box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(66, 133, 244, 0.08),
+    0 0 40px rgba(255, 215, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
 }
@@ -111,5 +112,5 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #ffffff, var(--color-neon), #c084fc);
+  background-image: linear-gradient(to right, #ffffff, var(--color-neon), var(--color-green));
 }
