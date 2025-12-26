@@ -20,12 +20,12 @@ Official website for Seam Cricket Academy, Bengaluru's premier cricket coaching 
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|------------|---------|
-| [Astro 5.8](https://astro.build) | Static site generator |
+| Technology                                | Purpose               |
+| ----------------------------------------- | --------------------- |
+| [Astro 5.8](https://astro.build)          | Static site generator |
 | [Tailwind CSS 4](https://tailwindcss.com) | Utility-first styling |
-| [GSAP](https://greensock.com/gsap/) | Animation library |
-| [Web3Forms](https://web3forms.com) | Form submission |
+| [GSAP](https://greensock.com/gsap/)       | Animation library     |
+| [Web3Forms](https://web3forms.com)        | Form submission       |
 
 ## 📁 Project Structure
 
@@ -54,7 +54,7 @@ html-seamcricketacademy/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or pnpm
 
 ### Installation
@@ -85,26 +85,26 @@ Output will be in the `dist/` folder.
 
 ## 📝 Key Components
 
-| Component | Description |
-|-----------|-------------|
-| `Navbar.astro` | Transparent navbar with Christmas theme, tagline, and smooth hide on scroll |
-| `Hero.astro` | Full-screen hero with background image and CTA |
-| `Programs.astro` | 2-column grid of all coaching programs |
-| `Coaches.astro` | 3-column grid of coach profiles with glass cards |
-| `Gallery.astro` | Auto-scrolling media carousel with fullscreen expand |
-| `ContactForm.astro` | Registration form with Web3Forms integration |
-| `FloatingWhatsApp.astro` | Context-aware WhatsApp button (shows on contact section) |
+| Component                | Description                                                                 |
+| ------------------------ | --------------------------------------------------------------------------- |
+| `Navbar.astro`           | Transparent navbar with Christmas theme, tagline, and smooth hide on scroll |
+| `Hero.astro`             | Full-screen hero with background image and CTA                              |
+| `Programs.astro`         | 2-column grid of all coaching programs                                      |
+| `Coaches.astro`          | 3-column grid of coach profiles with glass cards                            |
+| `Gallery.astro`          | Auto-scrolling media carousel with fullscreen expand                        |
+| `ContactForm.astro`      | Registration form with Web3Forms integration                                |
+| `FloatingWhatsApp.astro` | Context-aware WhatsApp button (shows on contact section)                    |
 
 ## 🎨 Design System
 
 ### Colors
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `void` | `#030305` | Background |
-| `depth` | `#0A0A0F` | Cards/Surfaces |
-| `neon` | `#4285F4` | Accent/CTAs |
-| `surface` | `rgba(255,255,255,0.03)` | Glass panels |
+| Token     | Value                    | Usage          |
+| --------- | ------------------------ | -------------- |
+| `void`    | `#030305`                | Background     |
+| `depth`   | `#0A0A0F`                | Cards/Surfaces |
+| `neon`    | `#4285F4`                | Accent/CTAs    |
+| `surface` | `rgba(255,255,255,0.03)` | Glass panels   |
 
 ### Typography
 
@@ -120,4 +120,4 @@ Output will be in the `dist/` folder.
 
 ---
 
-© 2025 Seam Cricket Academy. All rights reserved.
+© 2026 Seam Cricket Academy. All rights reserved.

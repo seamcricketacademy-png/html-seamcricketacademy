@@ -1,105 +1,166 @@
 ---
+
 ---
-<div class="relative z-[60] bg-void border-b border-white/5 overflow-hidden h-10 flex items-center justify-center">
-    <div class="absolute inset-0 bg-neon/5"></div>
-    
-    <!-- Content Wrapper -->
-    <div class="relative h-full w-full flex flex-col items-center justify-center overflow-hidden">
-        <div class="animate-vertical-slide flex flex-col items-center text-center w-full">
-            <!-- Message 1 -->
-            <a href="#contact" class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300">
-                <span class="text-neon animate-pulse">🚀</span> 
-                New Batches Launching Soon 
-                <span class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors">Enrol Now</span>
-            </a>
-            
-            <!-- Message 2 -->
-             <a href="#contact" class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300">
-                <span class="text-neon animate-pulse">📝</span> 
-                Admissions Open for 2025
-                <span class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors">Apply Today</span>
-            </a>
-             <!-- Message 1 Clone for smooth loop -->
-            <a href="#contact" class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300">
-                <span class="text-neon animate-pulse">🚀</span> 
-                New Batches Launching Soon 
-                <span class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors">Enrol Now</span>
-            </a>
-        </div>
+
+<div
+  class="relative z-[60] bg-void border-b border-white/5 overflow-hidden h-10 flex items-center justify-center"
+>
+  <div class="absolute inset-0 bg-neon/5"></div>
+
+  <!-- Content Wrapper -->
+  <div
+    class="relative h-full w-full flex flex-col items-center justify-center overflow-hidden"
+  >
+    <div
+      class="animate-vertical-slide flex flex-col items-center text-center w-full"
+    >
+      <!-- Message 1 -->
+      <a
+        href="#contact"
+        class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300"
+      >
+        <span class="text-neon animate-pulse">🚀</span>
+        New Batches Launching Soon
+        <span
+          class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors"
+          >Enrol Now</span
+        >
+      </a>
+
+      <!-- Message 2 -->
+      <a
+        href="#contact"
+        class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300"
+      >
+        <span class="text-neon animate-pulse">📝</span>
+        Admissions Open for 2026
+        <span
+          class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors"
+          >Apply Today</span
+        >
+      </a>
+      <!-- Message 1 Clone for smooth loop -->
+      <a
+        href="#contact"
+        class="h-10 flex items-center justify-center gap-2 group cursor-pointer w-full text-sm font-light tracking-wider text-white/80 hover:text-neon transition-colors duration-300"
+      >
+        <span class="text-neon animate-pulse">🚀</span>
+        New Batches Launching Soon
+        <span
+          class="hidden sm:inline border-b border-neon/50 group-hover:border-neon transition-colors"
+          >Enrol Now</span
+        >
+      </a>
     </div>
+  </div>
 </div>
 
 <style>
-    @keyframes vertical-slide {
-        0%, 30% { transform: translateY(0); }
-        33%, 63% { transform: translateY(-33.33%); } /* Show 2nd item */
-        66%, 96% { transform: translateY(-66.66%); } /* Show 3rd item (clone) */
-        100% { transform: translateY(-66.66%); } /* End at clone, js reset usually needed but for simple css loop we trick it or accept snap. 
+  @keyframes vertical-slide {
+    0%,
+    30% {
+      transform: translateY(0);
+    }
+    33%,
+    63% {
+      transform: translateY(-33.33%);
+    } /* Show 2nd item */
+    66%,
+    96% {
+      transform: translateY(-66.66%);
+    } /* Show 3rd item (clone) */
+    100% {
+      transform: translateY(-66.66%);
+    } /* End at clone, js reset usually needed but for simple css loop we trick it or accept snap.
         Actually for pure CSS loop, we usually slide 0 -> -33 -> -66 -> 0 (jump) but jump is visible.
         Better approach: 0% -> -50% (if 2 items+clone)
         Let's try a standard 2-step infinite loop with 3 items (1, 2, 1-clone)
         */
-        0%, 45% { transform: translateY(0); }
-        50%, 95% { transform: translateY(-40px); } /* Assuming h-10 is 40px */
-        100% { transform: translateY(-80px); }
+    0%,
+    45% {
+      transform: translateY(0);
     }
+    50%,
+    95% {
+      transform: translateY(-40px);
+    } /* Assuming h-10 is 40px */
+    100% {
+      transform: translateY(-80px);
+    }
+  }
 
-    /* 
+  /*
        Refined Animation:
        Item Height = 40px (h-10)
        Total Items = 2 real + 1 clone = 3
-       Keyframes: 
+       Keyframes:
        0-45%: Show Item 1 (Y=0)
        50-95%: Show Item 2 (Y=-40px)
        100%: Show Item 3 (Clone 1) (Y=-80px) -> Immediate Jump to 0
     */
 
-    .animate-vertical-slide {
-        animation: slide-up 6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
+  .animate-vertical-slide {
+    animation: slide-up 6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
 
-    @keyframes slide-up {
-        0%, 45% { transform: translateY(0); }
-        50%, 95% { transform: translateY(-40px); }
-        100% { transform: translateY(-80px); } 
+  @keyframes slide-up {
+    0%,
+    45% {
+      transform: translateY(0);
     }
-    
-    /* We need a javascript reset for perfect loop or 2 identical sets? 
+    50%,
+    95% {
+      transform: translateY(-40px);
+    }
+    100% {
+      transform: translateY(-80px);
+    }
+  }
+
+  /* We need a javascript reset for perfect loop or 2 identical sets?
        Actually with 3 items (1,2,1), going to 100% (-80px) shows 1-clone.
        But we need to SNAP back to 0 without animation.
        CSS-only seamless loops usually use 2 sets and translate -50%.
        Let's stick to the 1-2-1 approach but since we can't 'snap' easily in simple keyframes without a glitch or complex % math:
-       
-       Simpler approach: Just fade in/out two absolute items? 
+
+       Simpler approach: Just fade in/out two absolute items?
        No, slide is classier.
-       
+
        Let's use the 'double list' technique:
-       Moving the entire internal container from 0% to -50% (showing 2 items). 
+       Moving the entire internal container from 0% to -50% (showing 2 items).
     */
 </style>
 
 <!-- Re-thinking CSS Loop for perfection -->
-<!-- 
+<!--
 Structure:
 [ Item A ]
 [ Item B ]
 [ Item A ] (Clone)
 
-Animation: 
+Animation:
 0 - 45%: translateY(0) (View A)
 50 - 95%: translateY(-100%) (View B)
 (No, percent is relative to element size. using px is safer for h-10 aka 40px)
 -->
 <style>
-    @keyframes slide-infinite {
-        0%, 45% { transform: translateY(0); }
-        50%, 95% { transform: translateY(-40px); }
-        100% { transform: translateY(-80px); }
+  @keyframes slide-infinite {
+    0%,
+    45% {
+      transform: translateY(0);
     }
-    
-    /* 
+    50%,
+    95% {
+      transform: translateY(-40px);
+    }
+    100% {
+      transform: translateY(-80px);
+    }
+  }
+
+  /*
     The issue with 0->45->50->95->100 is:
-    At 100% we are at -80px (Item A Clone). 
+    At 100% we are at -80px (Item A Clone).
     The animation loops to 0% (Item A).
     So it slides 0 -> -40 -> -80 (which looks like A -> B -> A).
     Then it JUMPS from -80 (A) to 0 (A). Since they are identical, the jump is invisible!

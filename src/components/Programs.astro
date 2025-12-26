@@ -1,8 +1,8 @@
 ---
 // Merged service cards with all details where applicable
 const programs = [
-    { 
-        title: "Children Weekend", 
+    {
+        title: "Children Weekend",
         desc: "Structured weekend coaching program for young cricketers.",
         ageGroup: "5 yrs - 17 yrs",
         timing: "Sat: 3:30 PM - 5:30 PM • Sun: 7:00 AM - 9:00 AM",
@@ -10,17 +10,18 @@ const programs = [
         icon: "🏏",
         featured: true
     },
-    { 
-        title: "Children Weekday", 
+    {
+        title: "Children Weekday",
         desc: "Regular training sessions on Mondays, Wednesdays, and Fridays.",
         ageGroup: "5 yrs - 17 yrs",
         timing: "Mon, Wed, Fri: 5:15 PM - 7:00 PM",
         period: "Year Round",
         icon: "🌙",
-        featured: false
+        featured: false,
+        newBatch: true
     },
-    { 
-        title: "Adult Coaching", 
+    {
+        title: "Adult Coaching",
         desc: "Morning sessions for adults looking to improve their game.",
         ageGroup: "18 yrs and above",
         timing: "Mon-Fri: 7:00 AM - 9:00 AM",
@@ -28,67 +29,67 @@ const programs = [
         icon: "💪",
         featured: false
     },
-    { 
-        title: "1-on-1 Training Sessions", 
+    {
+        title: "1-on-1 Training Sessions",
         desc: "Personalized sessions focused on individual development.",
         timing: "Flexible",
         icon: "🎯",
         featured: true
     },
-    { 
-        title: "Adult 1-on-1 Sessions", 
+    {
+        title: "Adult 1-on-1 Sessions",
         desc: "Perfect for adults looking to get back into the game or improve fitness and form.",
         ageGroup: "18 yrs and above",
         timing: "Flexible",
         icon: "🏃",
         featured: false
     },
-    { 
-        title: "Cricket Net Rentals", 
+    {
+        title: "Cricket Net Rentals",
         desc: "Fast-paced astro turf pitches available for practice. Net Booking (Pay per hour) and Bowling Machine options available.",
         timing: "Pay Per Hour",
         icon: "🥅",
         featured: false
     },
-    { 
-        title: "Side-Arm Throw Down Sessions", 
+    {
+        title: "Side-Arm Throw Down Sessions",
         desc: "High-intensity throwdown sessions for serious batting drills.",
         icon: "⚡",
         featured: false
     },
-    { 
-        title: "Bowling Machine Sessions", 
+    {
+        title: "Bowling Machine Sessions",
         desc: "High-intensity bowling machine sessions for batting aspirants.",
         icon: "/assets/images/bowling_machine_emoji.png",
         isImage: true,
         featured: false
     },
-    { 
-        title: "Daily Weekday Batch", 
+    {
+        title: "Daily Weekday Batch",
         desc: "Intensive daily morning training sessions.",
         timing: "Mon-Fri: 7:00 AM - 8:30 AM",
         icon: "🏏",
         featured: false,
         newBatch: true
     },
-    { 
-        title: "Adult Weekday Batches", 
+    {
+        title: "Adult Weekday Batches",
         desc: "Evening training sessions for adults.",
         timing: "Mon, Wed, Fri: 7:00 PM - 8:30 PM",
         icon: "🏆",
         featured: false,
         newBatch: true
     },
-    { 
-        title: "Annual Camp (For Kids 5+ yrs)", 
+    {
+        title: "Annual Camp (For Kids 5+ yrs)",
         desc: "A structured 10-month program for young aspiring cricketers.",
         ageGroup: "5 yrs and above",
         period: "10 Months",
         icon: "📅",
         featured: true
     },
-    { 
-        title: "Summer Coaching Camp", 
+    {
+        title: "Summer Coaching Camp",
         desc: "A focused 2-month camp with skill drills and match play.",
         period: "April & May",
         icon: "☀️",
@@ -102,55 +103,63 @@ const regularPrograms = programs.filter(p => !p.newBatch);
 
 <!-- Section 1: New Batches (Featured Container) -->
 {newBatches.length > 0 && (
-    <div class="relative border border-neon/30 bg-neon/5 rounded-3xl p-8 lg:p-12 mb-16 mt-8">
-        <!-- Unified Hero Banner -->
-        <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-2 bg-neon text-[var(--bg-dark)] text-sm font-bold uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(var(--neon-rgb),0.6)] whitespace-nowrap z-20">
-            New Batches launching & admissions open
+    <div class="relative mb-16 mt-12">
+        <!-- Background & Border Wrapper (Clipped) -->
+        <div class="absolute inset-0 border-2 border-amber-500/40 bg-gradient-to-br from-amber-900/20 via-transparent to-amber-900/10 rounded-3xl overflow-hidden">
+             <div class="absolute inset-0 shimmer-effect pointer-events-none"></div>
         </div>
 
-        <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Unified Hero Banner (Not Clipped) -->
+        <div class="absolute -top-5 left-1/2 -translate-x-1/2 px-8 py-2 bg-amber-500 text-black text-sm font-bold uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(245,158,11,0.6)] whitespace-nowrap z-20 flex items-center gap-2">
+            <span class="animate-pulse">✨</span>
+            New Batches launching & admissions open
+            <span class="animate-pulse">✨</span>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 p-8 lg:p-12 grid lg:grid-cols-3 gap-8">
             {newBatches.map((program) => (
-                <div class="program-card relative">
-                    <div class="h-full glass-panel p-10 transition-all duration-500 hover:border-neon/50 border-neon/20">
+                <div class="program-card relative group">
+                    <div class="h-full glass-panel p-8 transition-all duration-500 hover:border-amber-500/50 border-amber-500/20 bg-black/40 flex flex-col">
                         <!-- Header row with icon and title -->
-                        <div class="flex items-start gap-6 mb-6">
-                            <div class="text-5xl flex-shrink-0 flex items-center justify-center">
+                        <div class="flex items-start gap-4 mb-6">
+                            <div class="text-4xl shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/20 group-hover:scale-110 transition-transform duration-500">
                                 {program.isImage ? (
-                                    <img 
-                                        src="/assets/images/bowling_machine_transparent.png" 
-                                        alt={program.title} 
-                                        class="w-16 h-16 object-contain"
+                                    <img
+                                        src="/assets/images/bowling_machine_transparent.png"
+                                        alt={program.title}
+                                        class="w-10 h-10 object-contain"
                                         loading="lazy"
                                     />
                                 ) : (
                                     program.icon
                                 )}
                             </div>
-                            
+
                             <div class="flex-1">
-                                <h3 class="text-2xl font-light text-white mb-3 tracking-wide">{program.title}</h3>
-                                <p class="text-white/60 leading-relaxed">{program.desc}</p>
+                                <h3 class="text-xl font-bold text-white mb-2 tracking-wide group-hover:text-amber-400 transition-colors">{program.title}</h3>
+                                <p class="text-white/70 text-sm leading-relaxed">{program.desc}</p>
                             </div>
                         </div>
-                        
+
                         <!-- Details -->
-                        <div class="flex flex-wrap gap-6 pt-6 border-t border-white/10">
+                        <div class="mt-auto flex flex-col gap-3 pt-6 border-t border-white/10">
                             {program.ageGroup && (
                                 <div class="flex items-center gap-3">
-                                    <span class="text-neon text-lg">👤</span>
-                                    <span class="text-white/70">{program.ageGroup}</span>
+                                    <span class="text-amber-400 text-lg">👤</span>
+                                    <span class="text-white/80 text-sm font-medium">{program.ageGroup}</span>
                                 </div>
                             )}
                             {program.timing && (
                                 <div class="flex items-center gap-3">
-                                    <span class="text-neon text-lg">🕐</span>
-                                    <span class="text-white/70">{program.timing}</span>
+                                    <span class="text-amber-400 text-lg">🕐</span>
+                                    <span class="text-white/80 text-sm font-medium">{program.timing}</span>
                                 </div>
                             )}
                             {program.period && (
                                 <div class="flex items-center gap-3">
-                                    <span class="text-neon text-lg">📅</span>
-                                    <span class="text-white/70">{program.period}</span>
+                                    <span class="text-amber-400 text-lg">📅</span>
+                                    <span class="text-white/80 text-sm font-medium">{program.period}</span>
                                 </div>
                             )}
                         </div>
@@ -161,62 +170,79 @@ const regularPrograms = programs.filter(p => !p.newBatch);
     </div>
 )}
 
+<style>
+    .shimmer-effect {
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(251, 191, 36, 0.05) 50%,
+            transparent 100%
+        );
+        animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+    }
+</style>
+
 <!-- Section 2: Regular Programs -->
-<div class="grid lg:grid-cols-2 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {regularPrograms.map((program) => (
         <div class={`program-card ${program.featured ? 'relative' : ''}`}>
-            <!-- Card - Bigger with more padding -->
-            <div class={`h-full glass-panel p-10 transition-all duration-500 hover:border-neon/30 ${program.featured ? 'border-neon/20' : ''}`}>
+            <!-- Card - Compact for 3-col layout -->
+            <div class={`h-full glass-panel p-8 transition-all duration-500 hover:border-neon/30 flex flex-col ${program.featured ? 'border-neon/20' : ''}`}>
                 <!-- Featured Badge -->
                 {program.featured && (
-                    <div class="absolute top-6 right-6 px-4 py-1.5 bg-neon/15 text-neon text-xs uppercase tracking-widest rounded-full border border-neon/20">
+                    <div class="absolute top-6 right-6 px-3 py-1 bg-neon/15 text-neon text-[10px] uppercase tracking-widest rounded-full border border-neon/20">
                         Popular
                     </div>
                 )}
-                
+
                 <!-- Header row with icon and title -->
-                <div class="flex items-start gap-6 mb-6">
-                    <!-- Icon - Bigger -->
-                    <div class="text-5xl flex-shrink-0 flex items-center justify-center">
+                <div class="flex items-start gap-4 mb-6">
+                    <!-- Icon -->
+                    <div class="text-4xl shrink-0 flex items-center justify-center">
                         {program.isImage ? (
-                            <img 
-                                src="/assets/images/bowling_machine_transparent.png" 
-                                alt={program.title} 
-                                class="w-16 h-16 object-contain"
+                            <img
+                                src="/assets/images/bowling_machine_transparent.png"
+                                alt={program.title}
+                                class="w-12 h-12 object-contain"
                                 loading="lazy"
                             />
                         ) : (
                             program.icon
                         )}
                     </div>
-                    
+
                     <div class="flex-1">
-                        <!-- Title - Bigger -->
-                        <h3 class="text-2xl font-light text-white mb-3 tracking-wide">{program.title}</h3>
-                        
+                        <!-- Title -->
+                        <h3 class="text-xl font-bold text-white mb-2 tracking-wide pr-16">{program.title}</h3>
+
                         <!-- Description -->
-                        <p class="text-white/60 leading-relaxed">{program.desc}</p>
+                        <p class="text-white/60 text-sm leading-relaxed">{program.desc}</p>
                     </div>
                 </div>
-                
-                <!-- Details - Horizontal layout for better use of space -->
-                <div class="flex flex-wrap gap-6 pt-6 border-t border-white/10">
+
+                <!-- Details -->
+                <div class="mt-auto flex flex-col gap-3 pt-6 border-t border-white/10">
                     {program.ageGroup && (
                         <div class="flex items-center gap-3">
                             <span class="text-neon text-lg">👤</span>
-                            <span class="text-white/70">{program.ageGroup}</span>
+                            <span class="text-white/70 text-sm">{program.ageGroup}</span>
                         </div>
                     )}
                     {program.timing && (
                         <div class="flex items-center gap-3">
                             <span class="text-neon text-lg">🕐</span>
-                            <span class="text-white/70">{program.timing}</span>
+                            <span class="text-white/70 text-sm">{program.timing}</span>
                         </div>
                     )}
                     {program.period && (
                         <div class="flex items-center gap-3">
                             <span class="text-neon text-lg">📅</span>
-                            <span class="text-white/70">{program.period}</span>
+                            <span class="text-white/70 text-sm">{program.period}</span>
                         </div>
                     )}
                 </div>

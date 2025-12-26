@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2025-12-27
+
+### 🏆 Gold Theme & UI Polish
+
+Comprehensive visual update focusing on premium aesthetics and layout symmetry.
+
+### Changed
+
+- **Theme** - Switched to a sophisticated "Gold & Green" palette with metallic gradients.
+- **Typography** - Adopted `Outfit` font for headings to modernize the brand look.
+- **Contact Form** - Replaced native dropdown with a custom "Glass" select component.
+- **Programs Section** - Restructured into a symmetric 3-column grid; expanded "New Batches" to 3 cards.
+- **UX** - Disabled horizontal swipe gestures for a native app-like feel.
+- **Content** - Updated all admissions references to Season 2026.
+- **Layout** - Relocated "Player of the Month" for better narrative flow.
+
 ## [2.1.0] - 2025-12-26
 
 ### 🚀 Hero & Infrastructure Overhaul

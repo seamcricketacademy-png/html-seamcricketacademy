@@ -7,7 +7,7 @@
   --color-green: #22C55E; /* Green */
   --color-surface: rgba(255, 255, 255, 0.03);
 
-  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
 
   --image-hero-glow: radial-gradient(circle at 50% -20%, rgba(255, 215, 0, 0.15), rgba(0, 0, 0, 0));
   --image-card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -23,12 +23,14 @@
     font-family: var(--font-sans);
     scroll-behavior: smooth;
     scroll-snap-type: y proximity;
+    overscroll-behavior-x: none;
   }
 
   body {
     background-color: var(--color-void);
     color: white;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
     background-image:
       /* Stadium Light Glow (Top Center) */
       radial-gradient(circle at 50% -10%, rgba(255, 215, 0, 0.12) 0%, transparent 60%),
@@ -112,5 +114,5 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, #ffffff, var(--color-neon), var(--color-green));
+  background-image: linear-gradient(to right, #D4AF37, #FFD700, #D4AF37);
 }

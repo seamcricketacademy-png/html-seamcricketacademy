@@ -62,19 +62,70 @@ import academy from "../data/academy.json";
       coaching tailored for every age and skill level.
     </p>
 
-    <!-- Announcement Pill -->
-    <a
-      href="#programs"
-      class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-green-500/10 border border-green-500/20 backdrop-blur-md shadow-[0_0_20px_rgba(34,197,94,0.2)] hover:bg-green-500/20 transition-colors cursor-pointer"
-    >
+    <!-- Hero Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mt-16">
+      <!-- New Batches Card -->
       <div
-        class="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_10px_#22c55e]"
+        class="group relative glass-panel p-8 rounded-2xl border border-white/10 overflow-hidden hover:border-neon/50 transition-all duration-500 hover:-translate-y-1"
       >
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-neon/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        >
+        </div>
+        <div class="relative z-10 flex flex-col items-center">
+          <div
+            class="w-16 h-16 mb-4 rounded-full bg-neon/20 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(255,215,0,0.3)] group-hover:scale-110 transition-transform duration-500"
+          >
+            🚀
+          </div>
+          <h3
+            class="text-2xl font-bold text-white mb-2 tracking-wide uppercase"
+          >
+            New Batches
+          </h3>
+          <p class="text-white/60 text-sm font-light tracking-wider mb-4">
+            LAUNCHING SOON
+          </p>
+          <a
+            href="#programs"
+            class="px-6 py-2 rounded-full border border-neon/30 text-neon text-sm font-bold hover:bg-neon hover:text-black transition-all duration-300"
+          >
+            EXPLORE PROGRAMS
+          </a>
+        </div>
       </div>
-      <span class="text-green-500 font-bold tracking-widest text-sm uppercase"
-        >New Batches Launching & Admissions Open!</span
+
+      <!-- Admissions Open Card -->
+      <div
+        class="group relative glass-panel p-8 rounded-2xl border border-white/10 overflow-hidden hover:border-green-500/50 transition-all duration-500 hover:-translate-y-1"
       >
-    </a>
+        <div
+          class="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        >
+        </div>
+        <div class="relative z-10 flex flex-col items-center">
+          <div
+            class="w-16 h-16 mb-4 rounded-full bg-green-500/20 flex items-center justify-center text-3xl shadow-[0_0_20px_rgba(34,197,94,0.3)] group-hover:scale-110 transition-transform duration-500"
+          >
+            📝
+          </div>
+          <h3
+            class="text-2xl font-bold text-white mb-2 tracking-wide uppercase"
+          >
+            Admissions Open
+          </h3>
+          <p class="text-white/60 text-sm font-light tracking-wider mb-4">
+            SEASON 2026
+          </p>
+          <a
+            href="#contact"
+            class="px-6 py-2 rounded-full border border-green-500/30 text-green-400 text-sm font-bold hover:bg-green-500 hover:text-white transition-all duration-300"
+          >
+            REGISTER NOW
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>

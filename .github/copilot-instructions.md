@@ -26,7 +26,7 @@
 - **Legacy/Deprecated**: `backup-legacy/` and root `index.html` (if present). **DO NOT EDIT**.
 - **Deployment**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`).
   - **CRITICAL**: The deployment workflow runs from the **ROOT**. Do NOT reference `astro-revamp` in build steps or cache paths.
-  - **Large Files**: Do NOT commit video files >50MB. Use external hosting or LFS if absolutely necessary.
+  - **Large Files**: Do NOT commit video files >90MB. Use external hosting or LFS if absolutely necessary.
 
 ### 🎨 Design System ("Weightless" Aesthetic)
 

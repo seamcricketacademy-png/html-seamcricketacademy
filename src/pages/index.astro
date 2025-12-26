@@ -22,11 +22,6 @@ import academy from "../data/academy.json";
   </div>
 
   <main class="container mx-auto px-4">
-    <!-- Player of the Month - with extra top margin for smooth transition from hero -->
-    <section class="mb-28 mt-8 reveal">
-      <PlayerOfMonth />
-    </section>
-
     <!-- Programs Section -->
     <section id="programs" class="mb-32 reveal">
       <h2 class="text-4xl md:text-6xl font-bold mb-6 text-center text-white">
@@ -44,9 +39,10 @@ import academy from "../data/academy.json";
       <h2 class="text-4xl md:text-6xl font-bold mb-6 text-center text-white">
         Meet The <span class="text-neon">Coaches</span>
       </h2>
-      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto text-lg">
+      <p class="text-gray-400 text-center mb-16 max-w-3xl mx-auto text-lg">
         Our experienced coaching team brings decades of professional cricket
-        experience.
+        experience. Our coaching team combines over 60 years of professional
+        cricket experience to develop champions at every level.
       </p>
       <Coaches />
     </section>
@@ -65,6 +61,11 @@ import academy from "../data/academy.json";
         Why <span class="text-neon">Choose Us?</span>
       </h2>
       <WhyChooseUs />
+    </section>
+
+    <!-- Player of the Month -->
+    <section class="mb-32 reveal">
+      <PlayerOfMonth />
     </section>
 
     <!-- Gallery Section -->

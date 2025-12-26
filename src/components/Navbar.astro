@@ -31,15 +31,15 @@ const navLinks = [
       </span>
     </a>
 
-    <!-- Navigation Links (Always Visible, Scrollable on Mobile) -->
-    <div class="flex-1 overflow-x-auto scrollbar-hide">
-      <ul class="flex items-center justify-end gap-4 md:gap-8 min-w-max">
+    <!-- Navigation Links (Desktop) -->
+    <div class="hidden md:block">
+      <ul class="flex items-center gap-8">
         {
           navLinks.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="text-white/70 hover:text-white font-light transition-all duration-300 text-xs md:text-sm tracking-[0.1em] md:tracking-[0.15em] uppercase relative group py-2 whitespace-nowrap"
+                class="text-white/70 hover:text-white font-light transition-all duration-300 text-sm tracking-[0.15em] uppercase relative group py-2"
               >
                 <span class="relative z-10">{link.label}</span>
                 <span class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neon to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
@@ -49,7 +49,67 @@ const navLinks = [
         }
       </ul>
     </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-white p-2 focus:outline-none"
+      aria-label="Toggle Menu"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-40 bg-void/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center"
+  >
+    <button
+      id="close-menu-btn"
+      class="absolute top-6 right-6 text-white/50 hover:text-white p-2"
+    >
+      <svg
+        class="w-8 h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <ul class="flex flex-col items-center gap-8">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="mobile-link text-2xl font-light text-white/80 hover:text-neon tracking-widest uppercase transition-colors"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </header>
 
 <style>
@@ -113,4 +173,22 @@ const navLinks = [
   }, observerOptions);
 
   sections.forEach((section) => observer.observe(section));
+
+  // Mobile Menu Logic
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const closeMenuBtn = document.getElementById("close-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  function toggleMenu() {
+    mobileMenu?.classList.toggle("translate-x-full");
+    document.body.classList.toggle("overflow-hidden");
+  }
+
+  mobileMenuBtn?.addEventListener("click", toggleMenu);
+  closeMenuBtn?.addEventListener("click", toggleMenu);
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", toggleMenu);
+  });
 </script>
