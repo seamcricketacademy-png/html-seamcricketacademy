@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { label: "Home", href: "#home", icon: "🏠" },
-  { label: "Programs", href: "#programs", icon: "🏏" },
-  { label: "Coaches", href: "#trainers", icon: "👨‍🏫" },
-  { label: "About Us", href: "#about", icon: "ℹ️" },
-  { label: "Gallery", href: "#gallery", icon: "📸" },
-  { label: "Join Us", href: "#contact", icon: "📝" },
+  { label: "Home", href: "#home", icon: "🏠", ariaLabel: "Navigate to Home" },
+  { label: "Programs", href: "#programs", icon: "🏏", ariaLabel: "View Programs" },
+  { label: "Coaches", href: "#trainers", icon: "🎓", ariaLabel: "Meet the Coaches" },
+  { label: "About Us", href: "#about", icon: "ℹ️", ariaLabel: "Learn About Us" },
+  { label: "Gallery", href: "#gallery", icon: "📸", ariaLabel: "View Gallery" },
+  { label: "Join Us", href: "#contact", icon: "📝", ariaLabel: "Join Us - Contact Form" },
 ];
 ---
 
@@ -102,8 +102,9 @@ const navLinks = [
             <a
               href={link.href}
               class="mobile-link flex flex-col items-center gap-2 text-white/80 hover:text-neon transition-colors group"
+              aria-label={link.ariaLabel}
             >
-              <span class="text-4xl group-hover:scale-110 transition-transform duration-300">
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                 {link.icon}
               </span>
               <span class="text-sm font-light tracking-wider uppercase">
