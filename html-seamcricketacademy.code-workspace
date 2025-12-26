@@ -4,5 +4,8 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdown.validate.enabled": true,
+		"terminal.integrated.cwd": "${workspaceFolder}"
+	}
 }

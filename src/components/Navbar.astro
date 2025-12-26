@@ -1,0 +1,116 @@
+---
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Programs", href: "#programs" },
+  { label: "Coaches", href: "#trainers" },
+  { label: "About Us", href: "#about" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Join Us", href: "#contact" },
+];
+---
+
+<header
+  id="mainNav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] bg-transparent backdrop-blur-sm"
+>
+  <nav
+    class="container mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-4"
+  >
+    <!-- Logo -->
+    <a href="#home" class="flex items-center gap-3 group flex-shrink-0">
+      <img
+        src="/assets/images/Seams Logo.png"
+        alt="Seam Cricket Academy"
+        class="h-10 md:h-14 w-auto transition-all duration-500 group-hover:drop-shadow-[0_0_15px_rgba(66,133,244,0.5)]"
+      />
+      <!-- Tagline - Desktop only -->
+      <span
+        class="hidden lg:block text-white/60 text-sm font-light tracking-wide border-l border-white/20 pl-3"
+      >
+        Train Hard. Play Smart. Rise Higher.
+      </span>
+    </a>
+
+    <!-- Navigation Links (Always Visible, Scrollable on Mobile) -->
+    <div class="flex-1 overflow-x-auto scrollbar-hide">
+      <ul class="flex items-center justify-end gap-4 md:gap-8 min-w-max">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-white/70 hover:text-white font-light transition-all duration-300 text-xs md:text-sm tracking-[0.1em] md:tracking-[0.15em] uppercase relative group py-2 whitespace-nowrap"
+              >
+                <span class="relative z-10">{link.label}</span>
+                <span class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neon to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  // Auto-hide navbar on scroll
+  const nav = document.getElementById("mainNav");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      nav?.classList.add("-translate-y-full", "opacity-0");
+    } else {
+      nav?.classList.remove("-translate-y-full", "opacity-0");
+    }
+    lastScrollY = currentScrollY;
+  });
+
+  // Active Section Tracker & URL Updater
+  const sections = document.querySelectorAll('section[id], div[id="home"]');
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -70% 0px", // Trigger when section is near top
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        if (id) {
+          // Update URL without jumping
+          history.replaceState(null, "", `#${id}`);
+
+          // Update Active State
+          navLinks.forEach((link) => {
+            link.classList.remove("text-neon", "font-bold");
+            link.classList.add("text-white/70");
+
+            // Check if href matches current id
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.remove("text-white/70");
+              link.classList.add("text-neon", "font-bold");
+            }
+          });
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach((section) => observer.observe(section));
+</script>
