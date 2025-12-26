@@ -11,6 +11,7 @@ import Coaches from "../components/Coaches.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Footer from "../components/Footer.astro";
 import ScrollReveal from "../components/ScrollReveal.astro";
+import Gallery from "../components/Gallery.astro";
 import academy from "../data/academy.json";
 ---
 
@@ -64,6 +65,14 @@ import academy from "../data/academy.json";
         Why <span class="text-neon">Choose Us?</span>
       </h2>
       <WhyChooseUs />
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="mb-32 reveal">
+      <h2 class="text-4xl md:text-6xl font-bold mb-16 text-center text-white">
+        Our <span class="text-neon">Gallery</span>
+      </h2>
+      <Gallery />
     </section>
 
     <!-- Testimonials Section -->
