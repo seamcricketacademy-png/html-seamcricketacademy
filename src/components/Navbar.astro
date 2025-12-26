@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Programs", href: "#programs" },
-  { label: "Coaches", href: "#trainers" },
-  { label: "About Us", href: "#about" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Join Us", href: "#contact" },
+  { label: "Home", href: "#home", icon: "🏠" },
+  { label: "Programs", href: "#programs", icon: "🏏" },
+  { label: "Coaches", href: "#trainers", icon: "👨‍🏫" },
+  { label: "About Us", href: "#about", icon: "ℹ️" },
+  { label: "Gallery", href: "#gallery", icon: "📸" },
+  { label: "Join Us", href: "#contact", icon: "📝" },
 ];
 ---
 
@@ -95,15 +95,20 @@ const navLinks = [
       </svg>
     </button>
 
-    <ul class="flex flex-col items-center gap-8">
+    <ul class="flex flex-col items-center gap-6">
       {
         navLinks.map((link) => (
           <li>
             <a
               href={link.href}
-              class="mobile-link text-2xl font-light text-white/80 hover:text-neon tracking-widest uppercase transition-colors"
+              class="mobile-link flex flex-col items-center gap-2 text-white/80 hover:text-neon transition-colors group"
             >
-              {link.label}
+              <span class="text-4xl group-hover:scale-110 transition-transform duration-300">
+                {link.icon}
+              </span>
+              <span class="text-sm font-light tracking-wider uppercase">
+                {link.label}
+              </span>
             </a>
           </li>
         ))
