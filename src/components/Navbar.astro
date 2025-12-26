@@ -50,66 +50,16 @@ const navLinks = [
       </ul>
     </div>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden text-white p-2 focus:outline-none"
-      aria-label="Toggle Menu"
+    <!-- Mobile Active Section Display (replaces hamburger menu) -->
+    <div
+      id="mobile-active-section"
+      class="md:hidden text-white/90 text-sm font-light tracking-wider uppercase"
     >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16"></path>
-      </svg>
-    </button>
+      Home
+    </div>
   </nav>
 
-  <!-- Mobile Menu Overlay -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 z-40 bg-void/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center"
-  >
-    <button
-      id="close-menu-btn"
-      class="absolute top-6 right-6 text-white/50 hover:text-white p-2"
-    >
-      <svg
-        class="w-8 h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
-
-    <ul class="flex flex-col items-center gap-8">
-      {
-        navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class="mobile-link text-2xl font-light text-white/80 hover:text-neon tracking-widest uppercase transition-colors"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <!-- Mobile Menu Overlay - REMOVED -->
 </header>
 
 <style>
@@ -141,6 +91,7 @@ const navLinks = [
   // Active Section Tracker & URL Updater
   const sections = document.querySelectorAll('section[id], div[id="home"]');
   const navLinks = document.querySelectorAll("nav ul li a");
+  const mobileActiveSection = document.getElementById("mobile-active-section");
 
   const observerOptions = {
     root: null,
@@ -156,7 +107,7 @@ const navLinks = [
           // Update URL without jumping
           history.replaceState(null, "", `#${id}`);
 
-          // Update Active State
+          // Update Active State on desktop nav
           navLinks.forEach((link) => {
             link.classList.remove("text-neon", "font-bold");
             link.classList.add("text-white/70");
@@ -165,6 +116,11 @@ const navLinks = [
             if (link.getAttribute("href") === `#${id}`) {
               link.classList.remove("text-white/70");
               link.classList.add("text-neon", "font-bold");
+              
+              // Update mobile active section display
+              if (mobileActiveSection) {
+                mobileActiveSection.textContent = link.textContent?.trim() || "";
+              }
             }
           });
         }
@@ -173,22 +129,4 @@ const navLinks = [
   }, observerOptions);
 
   sections.forEach((section) => observer.observe(section));
-
-  // Mobile Menu Logic
-  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-  const closeMenuBtn = document.getElementById("close-menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
-
-  function toggleMenu() {
-    mobileMenu?.classList.toggle("translate-x-full");
-    document.body.classList.toggle("overflow-hidden");
-  }
-
-  mobileMenuBtn?.addEventListener("click", toggleMenu);
-  closeMenuBtn?.addEventListener("click", toggleMenu);
-
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", toggleMenu);
-  });
 </script>
