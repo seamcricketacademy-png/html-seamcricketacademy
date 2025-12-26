@@ -4,11 +4,11 @@ on:
   # Trigger on push to main branch
   push:
     branches: [main]
-  
+
   # Trigger on release publish
   release:
     types: [published]
-  
+
   # Allow manual trigger from Actions tab
   workflow_dispatch:
 
